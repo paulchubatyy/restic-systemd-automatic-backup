@@ -68,6 +68,9 @@ restic backup \
 	$BACKUP_PATHS &
 wait $!
 
+su - xobb -c "notify-send --urgency=low --app-name=restic --icon=/home/xobb/Pictures/restic.png --category=BACKUP 'Backup Snaptshot Created' 'Your Documents folder has been backed up on the cloud at $(date)'"
+
+
 # Dereference and delete/prune old backups.
 # See restic-forget(1) or http://restic.readthedocs.io/en/latest/060_forget.html
 # --group-by only the tag and path, and not by hostname. This is because I create a B2 Bucket per host, and if this hostname accidentially change some time, there would now be multiple backup sets.
@@ -89,3 +92,4 @@ wait $!
 #wait $!
 
 echo "Backup & cleaning is done."
+
